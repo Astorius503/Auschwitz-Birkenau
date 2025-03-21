@@ -66,7 +66,6 @@ public class PopupBankManager : MonoBehaviour
         {
             userData.wallet -= amount;
             userData.balance += amount;
-            GameManager.Instance.SaveUserData(); // 자동 저장
         }
         Refresh();
     }
@@ -78,7 +77,6 @@ public class PopupBankManager : MonoBehaviour
         {
             userData.balance -= amount;
             userData.wallet += amount;
-            GameManager.Instance.SaveUserData(); // 자동 저장
         }
         Refresh();
     }
@@ -88,7 +86,7 @@ public class PopupBankManager : MonoBehaviour
     {
         if (int.TryParse(depositInput.text, out int amount))
         {
-            DepositAmount(amount); // 내부에서 저장 호출됨
+            DepositAmount(amount);
         }
     }
 
@@ -96,7 +94,7 @@ public class PopupBankManager : MonoBehaviour
     {
         if (int.TryParse(withdrawInput.text, out int amount))
         {
-            WithdrawAmount(amount); // 내부에서 저장 호출됨
+            WithdrawAmount(amount);
         }
     }
 
