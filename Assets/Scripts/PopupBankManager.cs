@@ -2,118 +2,111 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;  // TextMesh Pro 네임스페이스 추가
+using TMPro;
 
 public class PopupBankManager : MonoBehaviour
 {
-    public TextMeshProUGUI nameText;   // 이름을 표시할 TextMeshProUGUI
-    public TextMeshProUGUI balanceText;  // TextMeshProUGUI로 변경
-    public TextMeshProUGUI walletText;   // TextMeshProUGUI로 변경
-    public Button depositButton;
-    public Button withdrawButton;
-    public Button refreshButton;  // 새로고침 버튼 추가
+    [Header("텍스트 UI")]
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI balanceText;
+    public TextMeshProUGUI walletText;
+
+    [Header("패널")]
+    public GameObject mainPanel;
+    public GameObject depositPanel;
+    public GameObject withdrawPanel;
+
+    [Header("입력 필드")]
+    public TMP_InputField depositInput;
+    public TMP_InputField withdrawInput;
+
+    private UserData userData;
 
     void Start()
     {
-        // GameManager에서 UserData 가져오기
-        if (GameManager.Instance == null)
+        if (GameManager.Instance == null || GameManager.Instance.userData == null)
         {
-            Debug.LogError("GameManager 인스턴스가 없습니다!");
-            return;  // GameManager가 없으면 실행을 중지
+            Debug.LogError("GameManager 또는 UserData가 초기화되지 않았습니다!");
+            return;
         }
 
-        UserData userData = GameManager.Instance.userData;
+        userData = GameManager.Instance.userData;
+        ShowMainPanel();
+    }
 
-        if (userData == null)
-        {
-            Debug.LogError("UserData가 초기화되지 않았습니다!");
-            return;  // userData가 없으면 실행을 중지
-        }
+    // 패널 전환용 public 메서드 (OnClick에서 직접 연결)
+    public void ShowMainPanel()
+    {
+        mainPanel.SetActive(true);
+        depositPanel.SetActive(false);
+        withdrawPanel.SetActive(false);
+        Refresh();
+    }
 
-        // 이름, 잔액 및 지갑 정보 표시
-        UpdateNameDisplay(userData);
-        UpdateBalanceDisplay(userData);
-        UpdateWalletDisplay(userData);
+    public void ShowDepositPanel()
+    {
+        mainPanel.SetActive(false);
+        depositPanel.SetActive(true);
+        withdrawPanel.SetActive(false);
+        Refresh();
+    }
 
-        // 버튼 클릭 이벤트 설정
-        if (depositButton != null)
-        {
-            depositButton.onClick.AddListener(() => Deposit(userData)); // 입금 버튼 클릭 시 Deposit 메서드 호출
-        }
-        else
-        {
-            Debug.LogError("Deposit 버튼이 할당되지 않았습니다!");
-        }
+    public void ShowWithdrawPanel()
+    {
+        mainPanel.SetActive(false);
+        depositPanel.SetActive(false);
+        withdrawPanel.SetActive(true);
+        Refresh();
+    }
 
-        if (withdrawButton != null)
+    // 입금 버튼용 메서드 (int 값을 인스펙터에서 전달 가능)
+    public void DepositAmount(int amount)
+    {
+        if (userData.wallet >= amount)
         {
-            withdrawButton.onClick.AddListener(() => Withdraw(userData)); // 출금 버튼 클릭 시 Withdraw 메서드 호출
+            userData.wallet -= amount;
+            userData.balance += amount;
+            GameManager.Instance.SaveUserData(); // 자동 저장
         }
-        else
-        {
-            Debug.LogError("Withdraw 버튼이 할당되지 않았습니다!");
-        }
+        Refresh();
+    }
 
-        // 새로고침 버튼 클릭 이벤트 설정
-        if (refreshButton != null)
+    // 출금 버튼용 메서드
+    public void WithdrawAmount(int amount)
+    {
+        if (userData.balance >= amount)
         {
-            refreshButton.onClick.AddListener(() => Refresh()); // 새로고침 버튼 클릭 시 Refresh 메서드 호출
+            userData.balance -= amount;
+            userData.wallet += amount;
+            GameManager.Instance.SaveUserData(); // 자동 저장
         }
-        else
+        Refresh();
+    }
+
+    // 입력 필드를 통한 입출금
+    public void DepositFromInput()
+    {
+        if (int.TryParse(depositInput.text, out int amount))
         {
-            Debug.LogError("Refresh 버튼이 할당되지 않았습니다!");
+            DepositAmount(amount); // 내부에서 저장 호출됨
         }
     }
 
-    void Deposit(UserData userData)
+    public void WithdrawFromInput()
     {
-        userData.balance += 10000;  // 입금 예시
-        userData.wallet -= 10000;   // 지갑에서 차감
-        Refresh();  // UI 업데이트
-    }
-
-    void Withdraw(UserData userData)
-    {
-        userData.balance -= 10000;  // 출금 예시
-        userData.wallet += 10000;   // 지갑에 추가
-        Refresh();  // UI 업데이트
-    }
-
-    // 이름을 화면에 표시
-    void UpdateNameDisplay(UserData userData)
-    {
-        nameText.text = "사용자: " + userData.GetUserName();  // 이름 출력
-    }
-
-    void UpdateWalletDisplay(UserData userData)
-    {
-        walletText.text = "현금: " + userData.GetFormattedWallet();  // 천 단위로 콤마 추가
-    }
-
-    void UpdateBalanceDisplay(UserData userData)
-    {
-        balanceText.text = "잔액: " + userData.GetFormattedBalance();  // 천 단위로 콤마 추가
-    }
-
-    // UI 갱신을 위한 Refresh 메소드
-    public void Refresh()
-    {
-        UserData userData = GameManager.Instance.userData;
-
-        if (nameText != null)
+        if (int.TryParse(withdrawInput.text, out int amount))
         {
-            nameText.text = "사용자: " + userData.GetUserName(); // 플레이어 이름 업데이트
+            WithdrawAmount(amount); // 내부에서 저장 호출됨
         }
+    }
 
-        if (balanceText != null)
-        {
-            balanceText.text = "잔액: " + userData.GetFormattedBalance();  // 계좌 잔고 업데이트
-        }
-
-        if (walletText != null)
-        {
-            walletText.text = "현금: " + userData.GetFormattedWallet(); // 지갑 잔고 업데이트
-        }
+    // UI 텍스트 갱신
+    private void Refresh()
+    {
+        nameText.text = "사용자: " + userData.GetUserName();
+        balanceText.text = "잔액: " + userData.GetFormattedBalance();
+        walletText.text = "현금: " + userData.GetFormattedWallet();
     }
 }
+
 
