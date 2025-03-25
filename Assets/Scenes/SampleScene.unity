@@ -610,7 +610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &131572624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -757,7 +757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uD655\uC778"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f04923666980bf4b9a9b8a8b00c949c, type: 2}
   m_sharedMaterial: {fileID: -5217552695446582506, guid: 6f04923666980bf4b9a9b8a8b00c949c, type: 2}
@@ -1325,7 +1325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &332801572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1518,9 +1518,9 @@ RectTransform:
   - {fileID: 1763360224}
   m_Father: {fileID: 131572624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1620, y: -702}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &339114054
@@ -1764,9 +1764,9 @@ RectTransform:
   - {fileID: 1618410937}
   m_Father: {fileID: 131572624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1620, y: -378}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &404535736
@@ -3506,9 +3506,9 @@ RectTransform:
   - {fileID: 1525228386}
   m_Father: {fileID: 131572624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1620, y: -216}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1045830802
@@ -3691,9 +3691,9 @@ RectTransform:
   - {fileID: 1746959798}
   m_Father: {fileID: 131572624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -698, y: 262}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1135956259
@@ -3847,7 +3847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 50000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f04923666980bf4b9a9b8a8b00c949c, type: 2}
   m_sharedMaterial: {fileID: -5217552695446582506, guid: 6f04923666980bf4b9a9b8a8b00c949c, type: 2}
@@ -5094,7 +5094,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 10000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f04923666980bf4b9a9b8a8b00c949c, type: 2}
   m_sharedMaterial: {fileID: -5217552695446582506, guid: 6f04923666980bf4b9a9b8a8b00c949c, type: 2}
@@ -5632,7 +5632,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 30000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f04923666980bf4b9a9b8a8b00c949c, type: 2}
   m_sharedMaterial: {fileID: -5217552695446582506, guid: 6f04923666980bf4b9a9b8a8b00c949c, type: 2}
@@ -6549,9 +6549,9 @@ RectTransform:
   - {fileID: 1161887483}
   m_Father: {fileID: 131572624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1620, y: -540}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1801582405
@@ -6880,11 +6880,11 @@ MonoBehaviour:
   nameText: {fileID: 692999844}
   balanceText: {fileID: 1566645865}
   walletText: {fileID: 1425498602}
-  mainPanel: {fileID: 0}
-  depositPanel: {fileID: 0}
-  withdrawPanel: {fileID: 0}
-  depositInput: {fileID: 0}
-  withdrawInput: {fileID: 0}
+  mainPanel: {fileID: 332801571}
+  depositPanel: {fileID: 1307832520}
+  withdrawPanel: {fileID: 131572623}
+  depositInput: {fileID: 489444828}
+  withdrawInput: {fileID: 339114052}
 --- !u!114 &1868471911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7414,9 +7414,9 @@ RectTransform:
   - {fileID: 146832269}
   m_Father: {fileID: 131572624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1620, y: -864}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2084604508
